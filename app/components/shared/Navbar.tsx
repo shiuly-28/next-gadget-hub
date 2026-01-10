@@ -4,9 +4,14 @@ import Link from "next/link";
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from "@/components/ui/navigation-menu";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
-import { IoMdMenu } from "react-icons/io";
+
+import { usePathname } from "next/navigation";
+
+import MobileMenu from "./MobileMenu";
 
 const Navbar = () => {
+  const pathname = usePathname()
+  
   return (
     <header className="py-4 shadow-md bg-white">
       <nav className="max-w-7xl mx-auto px-4 flex justify-between items-center sm:px-6 lg:px-8">
@@ -21,17 +26,19 @@ const Navbar = () => {
           <NavigationMenuList className="flex space-x-6">
             
             <NavigationMenuItem>
-              <NavigationMenuLink href="/news" className="hover:text-red-600">News</NavigationMenuLink>
+              <NavigationMenuLink href="/news" className={`${pathname === '/news' ?'text-red-500' : ''} hover:text-red-600`}>
+              News
+              </NavigationMenuLink>
             </NavigationMenuItem>
             
             <NavigationMenuItem>
-              <NavigationMenuLink href="/about" className="hover:text-red-600">About</NavigationMenuLink>
+              <NavigationMenuLink href="/about" className={`${pathname === '/about' ?'text-red-500' : ''} hover:text-red-600`}>About</NavigationMenuLink>
             </NavigationMenuItem>
             
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Services</NavigationMenuTrigger>
+              <NavigationMenuTrigger className={`${pathname === '/services' ?'text-red-500' : ''} hover:text-red-600`}>Services</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="space-y-2 p-4 bg-white shadow-md rounded-md">
+                <ul className="space-y-2 p-4 bg-white  rounded-md">
                   <li>
                     <NavigationMenuLink href="/services/web">Web Development</NavigationMenuLink>
                   </li>
@@ -46,7 +53,7 @@ const Navbar = () => {
             </NavigationMenuItem>
             
             <NavigationMenuItem>
-              <NavigationMenuLink href="/contact" className="hover:text-red-600">Contact</NavigationMenuLink>
+              <NavigationMenuLink href="/contact" className={`${pathname === '/contact' ?'text-red-500' : ''} hover:text-red-600`}>Contact</NavigationMenuLink>
             </NavigationMenuItem>
             
           </NavigationMenuList>
@@ -59,15 +66,10 @@ const Navbar = () => {
           <Switch />
         </div>
          <Button variant="default">Login</Button>
+
         </div>
 
-        {/* mobile device menu */}
-
-       <div className="lg:hidden">
-        <Button variant={"outline"}>
-          <IoMdMenu size={24} />
-        </Button>
-       </div>
+       <MobileMenu/>
       </nav>
     </header>
   );
