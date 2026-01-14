@@ -62,7 +62,7 @@ const Navbar = () => {
         {/* Dark Mode Switch */}
         <div className="hidden lg:flex items-center space-x-4">
           <div className="flex items-center gap-3">
-          <span>Dark Mode</span>
+        
           <Switch />
         </div>
          <Button variant="default">Login</Button>
