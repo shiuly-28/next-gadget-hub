@@ -1,10 +1,11 @@
 import Banner from "./components/shared/Banner";
 import NewsCard from "./components/shared/NewsCard";
+import NewsLetter from "./components/shared/NewsLetter";
+
 import { NewsItems } from "./types/news";
 
-
 const Home = async() => {
-  const data = await fetch('http://localhost:5000/api/news');
+  const data = await fetch('https://news-api-next-js-two.vercel.app/api/news');
   const news = await data.json();
 
   return (
@@ -20,6 +21,7 @@ const Home = async() => {
         }
       </div>
     </div>
+    <NewsLetter/>
    </div>
   );
 }

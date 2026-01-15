@@ -1,11 +1,12 @@
 import Link from 'next/link'
 import React from 'react'
+import NewsList from '../components/news/NewsList'
 
 export default function page() {
   return (
     <div className='py-12'>
-     
-      news portal
+     <h2 className='text-2xl font-bold mb-8'>Latest News</h2>
+      <NewsList/>
     </div>
   )
 }
