@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google"; // সঠিক ইমপোর্ট
 import "./globals.css";
 import Navbar from "./components/shared/Navbar";
 import Footer from "./components/shared/Footer";
+import { ThemeProvider } from "./contex/themeContext";
 
 const roboto = Roboto({
   weight: ['400', '500', '700'], 
@@ -24,11 +25,13 @@ export default function RootLayout({
     <html lang="en">
 
       <body className={roboto.className}>
-        <Navbar />
+        <ThemeProvider>
+          <Navbar />
         <main className="min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {children}
         </main>
         <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

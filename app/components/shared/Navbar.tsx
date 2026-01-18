@@ -8,12 +8,21 @@ import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 
 import MobileMenu from "./MobileMenu";
+import { useContext } from "react";
+import { ThemeContext } from "@/app/contex/themeContext";
+
+interface ThemeContextType {
+isDarkMode:boolean;
+toggleTheme:() => void;
+}
 
 const Navbar = () => {
   const pathname = usePathname()
+
+  const {isDarkMode, toggleTheme}:any = useContext(ThemeContext)
   
   return (
-    <header className="py-4 shadow-md bg-white">
+    <header className={`py-4 shadow-md ${isDarkMode? "bg-gray-900 text-white" :""}`}>
       <nav className="max-w-7xl mx-auto px-4 flex justify-between items-center sm:px-6 lg:px-8">
         
         {/* Logo */}
@@ -38,7 +47,7 @@ const Navbar = () => {
             <NavigationMenuItem>
               <NavigationMenuTrigger className={`${pathname === '/services' ?'text-red-500' : ''} hover:text-red-600`}>Services</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="space-y-2 p-4 bg-white  rounded-md">
+                <ul className="space-y-2 p-4  rounded-md">
                   <li>
                     <NavigationMenuLink href="/services/web">Web Development</NavigationMenuLink>
                   </li>
@@ -61,8 +70,8 @@ const Navbar = () => {
 
         {/* Dark Mode Switch */}
         <div className="hidden lg:flex items-center space-x-4">
-          <div className="flex items-center gap-3">
-        
+          <div onClick={toggleTheme} className="flex items-center gap-3">
+          <span className="mr-2">Dark Mode</span>
           <Switch />
         </div>
          <Button variant="default">Login</Button>
