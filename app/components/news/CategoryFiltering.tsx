@@ -10,10 +10,10 @@ const CategoryFiltering = ({ onCategoryChange }: CategoryChangeProps) => {
   const categories = ["all", "tech", "health", "sports", "business",]
   return (
     <div className='gap-2 items-center justify-center mx-4'>
-      <h3 className='font-bold text-lg mb-2'>Filter By Cateory:</h3>
+      <h3 className='font-bold text-lg mb-2 flex-shrink-0'>Filter By Cateory:</h3>
       <Select 
       onValueChange={(value) => onCategoryChange(value === "all" ? "" : value)}>
-  <SelectTrigger className="w-[180px] captalize rounded-md">
+  <SelectTrigger className="w-[180px] capitalize rounded-md">
     <SelectValue placeholder="Select Category" />
   </SelectTrigger>
   <SelectContent>
