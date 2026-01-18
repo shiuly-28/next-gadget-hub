@@ -5,7 +5,9 @@ import NewsLetter from "./components/shared/NewsLetter";
 import { NewsItems } from "./types/news";
 
 const Home = async() => {
-  const data = await fetch('https://news-api-next-js-two.vercel.app/api/news');
+  const data = await fetch('https://news-api-next-js-two.vercel.app/api/news',{
+    cache: 'force-cache'
+  });
   const news = await data.json();
 
   return (
